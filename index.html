@@ -4,101 +4,152 @@
 <title>DΞRTCLØUD × PRIMΞCLØUD</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: url('bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    overflow: hidden;
+body{
+    font-family:Arial, sans-serif;
+    background:url('bg.jpg') no-repeat center center fixed;
+    background-size:cover;
+    overflow:hidden;
+    color:#ff1a1a;
 }
 
-.overlay {
-    background: rgba(0, 0, 0, 0.75);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    animation: fadeIn 2s ease-in-out;
+/* Dark overlay */
+.overlay{
+    background:rgba(0,0,0,0.80);
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    backdrop-filter:blur(6px);
+    animation:fadeIn 2s ease-in-out;
 }
 
-h1 {
-    font-size: 55px;
-    letter-spacing: 3px;
-    text-shadow: 0 0 20px cyan, 0 0 40px cyan;
-    margin-bottom: 20px;
+/* Title */
+h1{
+    font-size:60px;
+    letter-spacing:4px;
+    text-shadow:0 0 20px #ff0000, 0 0 40px #990000;
+    margin-bottom:20px;
+    animation:glow 2s infinite alternate;
 }
 
-p {
-    opacity: 0.8;
-    margin-bottom: 40px;
+@keyframes glow{
+    from{text-shadow:0 0 10px #ff0000;}
+    to{text-shadow:0 0 40px #ff0000;}
 }
 
-button {
-    padding: 15px 35px;
-    margin: 15px;
-    font-size: 18px;
-    border: 2px solid cyan;
-    background: transparent;
-    color: cyan;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: 0.4s;
+p{
+    margin-bottom:40px;
+    opacity:0.8;
 }
 
-button:hover {
-    background: cyan;
-    color: black;
-    box-shadow: 0 0 25px cyan;
+/* Buttons */
+button{
+    padding:15px 35px;
+    margin:15px;
+    font-size:18px;
+    border:2px solid #ff1a1a;
+    background:transparent;
+    color:#ff1a1a;
+    cursor:pointer;
+    border-radius:10px;
+    transition:0.4s;
 }
 
-.hidden {
-    display: none;
+button:hover{
+    background:#ff1a1a;
+    color:black;
+    box-shadow:0 0 25px #ff0000;
 }
 
-.loader {
-    border: 4px solid rgba(255,255,255,0.2);
-    border-top: 4px solid cyan;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin-top: 20px;
+.hidden{
+    display:none;
 }
 
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+/* Loader */
+.loader{
+    border:4px solid rgba(255,0,0,0.2);
+    border-top:4px solid #ff0000;
+    border-radius:50%;
+    width:45px;
+    height:45px;
+    animation:spin 1s linear infinite;
+    margin-top:20px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@keyframes spin{
+    100%{transform:rotate(360deg);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* Floating particles */
+.particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#ff0000;
+    border-radius:50%;
+    opacity:0.7;
+    animation:float 10s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
+}
+
+footer{
+    position:absolute;
+    bottom:20px;
+    font-size:14px;
+    opacity:0.5;
 }
 </style>
 
 <script>
-function loginDiscord() {
-    window.open("https://discord.gg/v3qXfrCcd", "_blank");
+function clickSound(){
+    var audio = new Audio("https://www.soundjay.com/buttons/sounds/button-16.mp3");
+    audio.play();
+}
+
+function loginDiscord(){
+    clickSound();
+    window.open("https://discord.gg/v3qXfrCcd","_blank");
 
     document.getElementById("loginBtn").classList.add("hidden");
     document.getElementById("loading").classList.remove("hidden");
 
-    setTimeout(function() {
+    setTimeout(function(){
         document.getElementById("loading").classList.add("hidden");
         document.getElementById("createSection").classList.remove("hidden");
-    }, 3000);
+    },3000);
 }
 
-function createServer() {
-    window.location.href = "https://www.crystalmchost.qzz.io/";
+function createServer(){
+    clickSound();
+    window.location.href="https://www.crystalmchost.qzz.io/";
+}
+
+/* Generate particles */
+window.onload=function(){
+    for(let i=0;i<50;i++){
+        let particle=document.createElement("div");
+        particle.classList.add("particle");
+        particle.style.left=Math.random()*100+"vw";
+        particle.style.animationDuration=(5+Math.random()*10)+"s";
+        document.body.appendChild(particle);
+    }
 }
 </script>
 
@@ -109,7 +160,7 @@ function createServer() {
 <div class="overlay">
 
 <h1>DΞRTCLØUD × PRIMΞCLØUD</h1>
-<p>Elite Free Minecraft Hosting • Instant Setup • High Performance</p>
+<p>Elite Dark Red Minecraft Hosting • High Performance • Instant Setup</p>
 
 <button id="loginBtn" onclick="loginDiscord()">LOGIN WITH DISCORD</button>
 
@@ -119,9 +170,13 @@ function createServer() {
 </div>
 
 <div id="createSection" class="hidden">
-    <h2>Access Granted 🚀</h2>
+    <h2>ACCESS GRANTED 🩸</h2>
     <button onclick="createServer()">CREATE SERVER</button>
 </div>
+
+<footer>
+© 2026 DΞRTCLØUD × PRIMΞCLØUD
+</footer>
 
 </div>
 
