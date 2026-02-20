@@ -18,9 +18,9 @@ body{
     color:#ff1a1a;
 }
 
-/* Dark overlay */
+/* Overlay */
 .overlay{
-    background:rgba(0,0,0,0.80);
+    background:rgba(0,0,0,0.85);
     height:100vh;
     display:flex;
     flex-direction:column;
@@ -28,7 +28,6 @@ body{
     align-items:center;
     text-align:center;
     backdrop-filter:blur(6px);
-    animation:fadeIn 2s ease-in-out;
 }
 
 /* Title */
@@ -73,26 +72,6 @@ button:hover{
     display:none;
 }
 
-/* Loader */
-.loader{
-    border:4px solid rgba(255,0,0,0.2);
-    border-top:4px solid #ff0000;
-    border-radius:50%;
-    width:45px;
-    height:45px;
-    animation:spin 1s linear infinite;
-    margin-top:20px;
-}
-
-@keyframes spin{
-    100%{transform:rotate(360deg);}
-}
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
 /* Floating particles */
 .particle{
     position:absolute;
@@ -100,7 +79,7 @@ button:hover{
     height:4px;
     background:#ff0000;
     border-radius:50%;
-    opacity:0.7;
+    opacity:0.6;
     animation:float 10s linear infinite;
 }
 
@@ -123,17 +102,10 @@ function clickSound(){
     audio.play();
 }
 
-function loginDiscord(){
+function showCreate(){
     clickSound();
-    window.open("https://discord.gg/v3qXfrCcd","_blank");
-
     document.getElementById("loginBtn").classList.add("hidden");
-    document.getElementById("loading").classList.remove("hidden");
-
-    setTimeout(function(){
-        document.getElementById("loading").classList.add("hidden");
-        document.getElementById("createSection").classList.remove("hidden");
-    },3000);
+    document.getElementById("createSection").classList.remove("hidden");
 }
 
 function createServer(){
@@ -143,7 +115,7 @@ function createServer(){
 
 /* Generate particles */
 window.onload=function(){
-    for(let i=0;i<50;i++){
+    for(let i=0;i<40;i++){
         let particle=document.createElement("div");
         particle.classList.add("particle");
         particle.style.left=Math.random()*100+"vw";
@@ -162,15 +134,10 @@ window.onload=function(){
 <h1>DΞRTCLØUD × PRIMΞCLØUD</h1>
 <p>Elite Dark Red Minecraft Hosting • High Performance • Instant Setup</p>
 
-<button id="loginBtn" onclick="loginDiscord()">LOGIN WITH DISCORD</button>
-
-<div id="loading" class="hidden">
-    <p>Verifying Discord Access...</p>
-    <div class="loader"></div>
-</div>
+<button id="loginBtn" onclick="showCreate()">LOGIN</button>
 
 <div id="createSection" class="hidden">
-    <h2>ACCESS GRANTED 🩸</h2>
+    <h2>WELCOME BACK 🩸</h2>
     <button onclick="createServer()">CREATE SERVER</button>
 </div>
 
