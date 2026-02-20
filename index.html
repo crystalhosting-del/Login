@@ -4,61 +4,101 @@
 <title>DΞRTCLØUD × PRIMΞCLØUD</title>
 
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: url('bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  text-align: center;
+    font-family: 'Arial', sans-serif;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    overflow: hidden;
 }
 
 .overlay {
-  background: rgba(0,0,0,0.7);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    animation: fadeIn 2s ease-in-out;
 }
 
 h1 {
-  font-size: 50px;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px cyan;
+    font-size: 55px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px cyan, 0 0 40px cyan;
+    margin-bottom: 20px;
+}
+
+p {
+    opacity: 0.8;
+    margin-bottom: 40px;
 }
 
 button {
-  padding: 15px 30px;
-  margin: 15px;
-  font-size: 18px;
-  background: transparent;
-  border: 2px solid cyan;
-  color: cyan;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s;
+    padding: 15px 35px;
+    margin: 15px;
+    font-size: 18px;
+    border: 2px solid cyan;
+    background: transparent;
+    color: cyan;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.4s;
 }
 
 button:hover {
-  background: cyan;
-  color: black;
-  box-shadow: 0 0 20px cyan;
+    background: cyan;
+    color: black;
+    box-shadow: 0 0 25px cyan;
 }
 
 .hidden {
-  display: none;
+    display: none;
+}
+
+.loader {
+    border: 4px solid rgba(255,255,255,0.2);
+    border-top: 4px solid cyan;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 </style>
 
 <script>
-function joinDiscord() {
-  window.open("https://discord.gg/qGskXW7kE", "_blank");
-  document.getElementById("step1").classList.add("hidden");
-  document.getElementById("step2").classList.remove("hidden");
+function loginDiscord() {
+    window.open("https://discord.gg/v3qXfrCcd", "_blank");
+
+    document.getElementById("loginBtn").classList.add("hidden");
+    document.getElementById("loading").classList.remove("hidden");
+
+    setTimeout(function() {
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("createSection").classList.remove("hidden");
+    }, 3000);
 }
 
 function createServer() {
-  window.location.href = "https://www.crystalmchost.qzz.io/";
+    window.location.href = "https://www.crystalmchost.qzz.io/";
 }
 </script>
 
@@ -69,15 +109,18 @@ function createServer() {
 <div class="overlay">
 
 <h1>DΞRTCLØUD × PRIMΞCLØUD</h1>
-<p>Premium Minecraft Hosting</p>
+<p>Elite Free Minecraft Hosting • Instant Setup • High Performance</p>
 
-<div id="step1">
-  <button onclick="joinDiscord()">GET STARTED</button>
+<button id="loginBtn" onclick="loginDiscord()">LOGIN WITH DISCORD</button>
+
+<div id="loading" class="hidden">
+    <p>Verifying Discord Access...</p>
+    <div class="loader"></div>
 </div>
 
-<div id="step2" class="hidden">
-  <h2>Step 2: Create Your Server</h2>
-  <button onclick="createServer()">CREATE A SERVER</button>
+<div id="createSection" class="hidden">
+    <h2>Access Granted 🚀</h2>
+    <button onclick="createServer()">CREATE SERVER</button>
 </div>
 
 </div>
