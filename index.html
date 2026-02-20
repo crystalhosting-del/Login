@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DΞRTCLØUD × PRIMΞCLØUD</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.7);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 50px;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px cyan;
+}
+
+button {
+  padding: 15px 30px;
+  margin: 15px;
+  font-size: 18px;
+  background: transparent;
+  border: 2px solid cyan;
+  color: cyan;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 20px cyan;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+
+<script>
+function joinDiscord() {
+  window.open("https://discord.gg/qGskXW7kE", "_blank");
+  document.getElementById("step1").classList.add("hidden");
+  document.getElementById("step2").classList.remove("hidden");
+}
+
+function createServer() {
+  window.location.href = "https://www.crystalmchost.qzz.io/";
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h1>DΞRTCLØUD × PRIMΞCLØUD</h1>
+<p>Premium Minecraft Hosting</p>
+
+<div id="step1">
+  <button onclick="joinDiscord()">GET STARTED</button>
+</div>
+
+<div id="step2" class="hidden">
+  <h2>Step 2: Create Your Server</h2>
+  <button onclick="createServer()">CREATE A SERVER</button>
+</div>
+
+</div>
+
+</body>
+</html>
